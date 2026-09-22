@@ -1,1 +1,127 @@
-{}
+{
+  "$defs": {
+    "EvidenceType": {
+      "enum": [
+        "STATIC_ANALYSIS",
+        "NETWORK_FETCH",
+        "HEURISTIC",
+        "LLM",
+        "COMPILER",
+        "NONE"
+      ],
+      "title": "EvidenceType",
+      "type": "string"
+    },
+    "IssueCode": {
+      "enum": [
+        "CODE_FILE_MISSING",
+        "METADATA_FILE_MISSING",
+        "ORPHAN_CODE_FILE",
+        "ORPHAN_METADATA_FILE",
+        "UNEXPECTED_EXTENSION",
+        "UNEXPECTED_PATH",
+        "ENCODING_INVALID",
+        "BINARY_CONTENT",
+        "CODE_EMPTY",
+        "CODE_TOO_SMALL",
+        "CODE_SUSPICIOUS_SIZE",
+        "CODE_TRUNCATED",
+        "CODE_SYNTAX_INVALID",
+        "CODE_LANGUAGE_MISMATCH",
+        "CODE_COMPILATION_FAILED",
+        "METADATA_MISSING",
+        "METADATA_INVALID",
+        "METADATA_INCONSISTENT",
+        "METADATA_SCHEMA_INVALID",
+        "SOURCE_MISSING",
+        "SOURCE_URL_MALFORMED",
+        "SOURCE_REPOSITORY_MISMATCH",
+        "SOURCE_UNAVAILABLE",
+        "SOURCE_FILE_NOT_FOUND",
+        "SOURCE_CONTENT_MISMATCH",
+        "SOURCE_CHANGED",
+        "LICENSE_MISSING",
+        "LICENSE_UNVERIFIED",
+        "LICENSE_UNKNOWN",
+        "LICENSE_CONFLICT",
+        "PROVENANCE_MISSING",
+        "PROVENANCE_INCOMPLETE",
+        "AUTHOR_MISSING",
+        "AUTHOR_UNVERIFIED",
+        "COMMIT_METADATA_MISSING",
+        "DATE_METADATA_MISSING",
+        "DUPLICATE_EXACT",
+        "DUPLICATE_NORMALIZED",
+        "DUPLICATE_NEAR",
+        "PROBLEM_SOLUTION_MISMATCH",
+        "PROBLEM_MATCH_UNCERTAIN",
+        "SOURCE_PROBLEM_MISMATCH",
+        "GENERATED_MARKER_FOUND",
+        "GENERATED_CODE_SUSPECTED"
+      ],
+      "title": "IssueCode",
+      "type": "string"
+    },
+    "Severity": {
+      "enum": [
+        "CRITICAL",
+        "HIGH",
+        "MEDIUM",
+        "LOW",
+        "INFO"
+      ],
+      "title": "Severity",
+      "type": "string"
+    }
+  },
+  "properties": {
+    "issue_code": {
+      "$ref": "#/$defs/IssueCode"
+    },
+    "severity": {
+      "$ref": "#/$defs/Severity"
+    },
+    "reason": {
+      "title": "Reason",
+      "type": "string"
+    },
+    "confidence": {
+      "maximum": 1.0,
+      "minimum": 0.0,
+      "title": "Confidence",
+      "type": "number"
+    },
+    "evidence_type": {
+      "$ref": "#/$defs/EvidenceType"
+    },
+    "evidence": {
+      "title": "Evidence",
+      "type": "string"
+    },
+    "validator": {
+      "title": "Validator",
+      "type": "string"
+    },
+    "validator_version": {
+      "title": "Validator Version",
+      "type": "string"
+    },
+    "created_at": {
+      "title": "Created At",
+      "type": "string"
+    }
+  },
+  "required": [
+    "issue_code",
+    "severity",
+    "reason",
+    "confidence",
+    "evidence_type",
+    "evidence",
+    "validator",
+    "validator_version",
+    "created_at"
+  ],
+  "title": "AuditIssue",
+  "type": "object"
+}

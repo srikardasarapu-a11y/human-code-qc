@@ -1,1 +1,245 @@
-{}
+{
+  "$defs": {
+    "AuditStatus": {
+      "enum": [
+        "CLEAN",
+        "ISSUES_FOUND"
+      ],
+      "title": "AuditStatus",
+      "type": "string"
+    },
+    "DecisionStatus": {
+      "enum": [
+        "VERIFIED",
+        "REJECTED",
+        "UNCERTAIN",
+        "HUMAN_REVIEW_REQUIRED",
+        "NOT_VERIFIED"
+      ],
+      "title": "DecisionStatus",
+      "type": "string"
+    },
+    "Language": {
+      "enum": [
+        "C",
+        "C++",
+        "Java",
+        "JavaScript",
+        "Python"
+      ],
+      "title": "Language",
+      "type": "string"
+    },
+    "LicenseStatus": {
+      "enum": [
+        "VERIFIED",
+        "OBSERVED",
+        "INFERRED",
+        "UNKNOWN"
+      ],
+      "title": "LicenseStatus",
+      "type": "string"
+    },
+    "ProvenanceStatus": {
+      "enum": [
+        "VERIFIED",
+        "OBSERVED",
+        "INFERRED",
+        "UNKNOWN"
+      ],
+      "title": "ProvenanceStatus",
+      "type": "string"
+    },
+    "RepairStatus": {
+      "enum": [
+        "SUCCESS",
+        "FAIL",
+        "PENDING"
+      ],
+      "title": "RepairStatus",
+      "type": "string"
+    }
+  },
+  "properties": {
+    "solution_id": {
+      "title": "Solution Id",
+      "type": "string"
+    },
+    "problem_id": {
+      "title": "Problem Id",
+      "type": "string"
+    },
+    "language": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Language"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "original_code_path": {
+      "title": "Original Code Path",
+      "type": "string"
+    },
+    "original_metadata_path": {
+      "title": "Original Metadata Path",
+      "type": "string"
+    },
+    "archive_sha256": {
+      "pattern": "^[a-fA-F0-9]{64}$",
+      "title": "Archive Sha256",
+      "type": "string"
+    },
+    "original_code_sha256": {
+      "pattern": "^[a-fA-F0-9]{64}$",
+      "title": "Original Code Sha256",
+      "type": "string"
+    },
+    "original_metadata_sha256": {
+      "pattern": "^[a-fA-F0-9]{64}$",
+      "title": "Original Metadata Sha256",
+      "type": "string"
+    },
+    "raw_code_hash": {
+      "pattern": "^[a-fA-F0-9]{64}$",
+      "title": "Raw Code Hash",
+      "type": "string"
+    },
+    "normalized_code_hash": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Normalized Code Hash"
+    },
+    "normalization_method": {
+      "title": "Normalization Method",
+      "type": "string"
+    },
+    "normalization_version": {
+      "title": "Normalization Version",
+      "type": "string"
+    },
+    "repository": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Repository"
+    },
+    "source_url": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Source Url"
+    },
+    "source_path": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Source Path"
+    },
+    "license": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/LicenseStatus"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "provenance_status": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ProvenanceStatus"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "audit_status": {
+      "$ref": "#/$defs/AuditStatus"
+    },
+    "repair_status": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/RepairStatus"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "verification_status": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/DecisionStatus"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "pipeline_version": {
+      "title": "Pipeline Version",
+      "type": "string"
+    },
+    "schema_version": {
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "config_hash": {
+      "title": "Config Hash",
+      "type": "string"
+    }
+  },
+  "required": [
+    "solution_id",
+    "problem_id",
+    "original_code_path",
+    "original_metadata_path",
+    "archive_sha256",
+    "original_code_sha256",
+    "original_metadata_sha256",
+    "raw_code_hash",
+    "normalization_method",
+    "normalization_version",
+    "audit_status",
+    "pipeline_version",
+    "schema_version",
+    "config_hash"
+  ],
+  "title": "ManifestEntry",
+  "type": "object"
+}

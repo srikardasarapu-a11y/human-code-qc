@@ -1,1 +1,74 @@
-{}
+{
+  "$defs": {
+    "RepairClass": {
+      "enum": [
+        "SAFE_DETERMINISTIC_REPAIR",
+        "LLM_ASSISTED_REPAIR",
+        "SOURCE_REFETCH_REQUIRED",
+        "HUMAN_REVIEW_REQUIRED",
+        "DO_NOT_REPAIR"
+      ],
+      "title": "RepairClass",
+      "type": "string"
+    },
+    "RepairStatus": {
+      "enum": [
+        "SUCCESS",
+        "FAIL",
+        "PENDING"
+      ],
+      "title": "RepairStatus",
+      "type": "string"
+    }
+  },
+  "properties": {
+    "job_id": {
+      "title": "Job Id",
+      "type": "string"
+    },
+    "repair_status": {
+      "$ref": "#/$defs/RepairStatus"
+    },
+    "repair_type": {
+      "$ref": "#/$defs/RepairClass"
+    },
+    "original_hash": {
+      "pattern": "^[a-fA-F0-9]{64}$",
+      "title": "Original Hash",
+      "type": "string"
+    },
+    "repaired_hash": {
+      "pattern": "^[a-fA-F0-9]{64}$",
+      "title": "Repaired Hash",
+      "type": "string"
+    },
+    "changes": {
+      "title": "Changes",
+      "type": "string"
+    },
+    "warnings": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Warnings",
+      "type": "array"
+    },
+    "confidence": {
+      "maximum": 1.0,
+      "minimum": 0.0,
+      "title": "Confidence",
+      "type": "number"
+    }
+  },
+  "required": [
+    "job_id",
+    "repair_status",
+    "repair_type",
+    "original_hash",
+    "repaired_hash",
+    "changes",
+    "confidence"
+  ],
+  "title": "RepairResult",
+  "type": "object"
+}
