@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+logs/
+
+# Local configuration
+config/local/
+config/secrets/
+
+# Dataset
+test-human-code.zip
+dataset/
+data/
+original/
+repositories/
+
+# Generated dataset artifacts
+audit/
+repaired/
+verified/
+manifests/
+evaluation/results/
+
+# Temporary files
+tmp/
+temp/
+working/
+*.tmp
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
+.DS_Store
