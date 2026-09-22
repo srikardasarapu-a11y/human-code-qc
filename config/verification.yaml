@@ -1,0 +1,5 @@
+# Verification Configuration
+sandbox:
+  engine: "docker"
+  timeout_seconds: 10
+  memory_limit: "512m"
