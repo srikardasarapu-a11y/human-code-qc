@@ -1,8 +1,0 @@
-model_list:
-  - model_name: code-repair
-    litellm_params:
-      model: ollama/deepseek-coder:6.7b
-      api_base: http://localhost:11434
-
-general_settings:
-  master_key: os.environ/LITELLM_MASTER_KEY

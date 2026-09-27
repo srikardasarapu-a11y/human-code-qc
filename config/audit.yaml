@@ -1,9 +1,0 @@
-# Audit Configuration
-limits:
-  max_files_per_batch: 50
-  timeout_per_file_seconds: 5
-
-checks:
-  syntax: true
-  utf8: true
-  ast_parsing: true
